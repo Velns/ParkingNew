@@ -1,0 +1,76 @@
+﻿<catel:UserControl
+    x:Class="Parking.Views.UsersView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:catel="http://schemas.catelproject.com">
+
+
+    <Grid>
+        <Label
+            Margin="0,26,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="User data"
+            FontFamily="Times New Roman"
+            FontSize="24" />
+
+        <Label
+            Height="23"
+            Margin="30,100,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Name"
+            RenderTransformOrigin="1.246,0.231" />
+        <Label
+            Height="23"
+            Margin="30,135,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Date of Birth"
+            RenderTransformOrigin="1.246,0.231" />
+        <Label
+            Height="23"
+            Margin="30,170,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Phone number"
+            RenderTransformOrigin="1.246,0.231" />
+        <TextBox
+            Height="23"
+            Margin="210,100,10,0"
+            VerticalAlignment="Top"
+            Text="{Binding Name}"
+            TextWrapping="Wrap" />
+        <DatePicker
+            Height="24"
+            Margin="210,135,10,0"
+            VerticalAlignment="Top" />
+        <TextBox
+            Height="23"
+            Margin="210,170,10,0"
+            VerticalAlignment="Top"
+            Text="{Binding PhoneNum}"
+            TextWrapping="Wrap"
+            UndoLimit="12" />
+
+        <StackPanel
+            Margin="5,250,5,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Orientation="Horizontal">
+            <Button
+                Width="80"
+                Height="20"
+                Margin="0,0,75,0"
+                Content="Reset" />
+            <Button
+                Width="80"
+                Height="20"
+                Margin="75,0,0,0"
+                Command="{Binding ShowName}"
+                Content="Edit" />
+        </StackPanel>
+
+    </Grid>
+
+</catel:UserControl>

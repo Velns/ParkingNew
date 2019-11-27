@@ -1,0 +1,78 @@
+﻿<catel:UserControl
+    x:Class="Parking.Views.TalonsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:catel="http://schemas.catelproject.com">
+
+    <Grid HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="43" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <ListView
+            Grid.Row="1"
+            Margin="10"
+            HorizontalContentAlignment="Stretch"
+            ItemsSource="{Binding TalonsCollection}"
+            SelectedItem="{Binding SelectedTalon}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn
+                        Width="120"
+                        DisplayMemberBinding="{Binding Parking}"
+                        Header="Parking" />
+                    <GridViewColumn
+                        Width="120"
+                        DisplayMemberBinding="{Binding Number}"
+                        Header="Number of talon" />
+                    <GridViewColumn
+                        Width="120"
+                        DisplayMemberBinding="{Binding Place}"
+                        Header="Place num" />
+                    <GridViewColumn
+                        Width="120"
+                        DisplayMemberBinding="{Binding CarNumber}"
+                        Header="Number of car" />
+                    <GridViewColumn
+                        Width="120"
+                        DisplayMemberBinding="{Binding StartDate}"
+                        Header="Date Start" />
+                    <GridViewColumn
+                        Width="120"
+                        DisplayMemberBinding="{Binding StopDate}"
+                        Header="Date stop" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ToolBar Grid.Row="0">
+            <Button
+                Width="75"
+                Height="22"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Command="{Binding AddTalon}"
+                Content="Add"
+                Focusable="False" />
+            <Button
+                Width="75"
+                Height="22"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Command="{Binding EditTalon}"
+                Content="Edit"
+                Focusable="False" />
+            <Button
+                Width="75"
+                Height="22"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Command="{Binding RemoveTalon}"
+                Content="Remove"
+                Focusable="False" />
+
+        </ToolBar>
+
+    </Grid>
+
+</catel:UserControl>
