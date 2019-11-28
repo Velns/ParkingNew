@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Parking.Models
 {
-    class Parking:ModelBase
+    class Parking: ValidatableModelBase
     {
 
         public string Name

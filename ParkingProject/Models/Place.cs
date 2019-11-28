@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Parking.Models
 {
-    class Place:ModelBase
+    class Place: ValidatableModelBase
     {
         public int Number
         {

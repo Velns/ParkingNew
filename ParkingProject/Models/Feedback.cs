@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Parking.Models
 {
-    class Feedback : ModelBase
+    class Feedback : ValidatableModelBase
     {
     }
 }

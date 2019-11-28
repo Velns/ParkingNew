@@ -7,7 +7,7 @@ using Catel.Data;
 
 namespace Parking.Models
 {
-    public class User : ModelBase
+    public class User : ValidatableModelBase
     {
 
         public string Login
@@ -40,7 +40,7 @@ namespace Parking.Models
         }
         public static readonly PropertyData PhoneNumProperty = RegisterProperty(nameof(PhoneNum), typeof(string), null);
 
-        protected void ValidateFields(List<IFieldValidationResult> validationResults)
+        protected override void ValidateFields(List<IFieldValidationResult> validationResults)
         {
             if (Login != "Login")
             {
