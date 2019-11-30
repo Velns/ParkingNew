@@ -1,9 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Threading.Tasks;
+using System.Windows.Media.Animation;
 using Catel;
 using Catel.Data;
 using Catel.MVVM;
 using Catel.Services;
 using Parking.Models;
+using Parking.Views;
 
 namespace Parking.ViewModels
 {
@@ -20,6 +25,8 @@ namespace Parking.ViewModels
         private readonly IViewModel signInViewModel;
         private readonly IViewModel talonsViewModel;
         private readonly IViewModel usersViewModel;
+
+        //private User _currUser;
 
         public override string Title { get { return "Parking"; } }
 
@@ -93,11 +100,27 @@ namespace Parking.ViewModels
             var a = new SignInViewModel(user);
             _uiVisualizerService.ShowDialogAsync(a);
 
-            CurrentViewModel = usersViewModel;
+            CurrentViewModel = signInViewModel;
         }
 
+        //private void SlowChangeView(IViewModel newViewModel)
         private async void SlowChangeView(IViewModel newViewModel)
         {
+            ////метод start animatiom
+            //DoubleAnimation opacityDA = new DoubleAnimation();
+            //opacityDA.From = 
+            //opacityDA.To = 0;
+            //opacityDA.Duration = TimeSpan.FromSeconds(0.1);
+
+            //CurrentViewModel = newViewModel;
+
+            ////методо Finish animation
+            //opacityDA.To = 1;
+            //opacityDA.Duration = TimeSpan.FromSeconds(0.1);
+            //opacityDA.AutoReverse = true;
+            //opacityDA.RepeatBehavior = new RepeatBehavior(0.1);
+            //opacityDA.BeginAnimation(OpacityView, opacityDA);
+
             await Task.Factory.StartNew(() =>
             {
                 for (double i = 1; OpacityView > 0; i -= 0.2)
@@ -112,7 +135,7 @@ namespace Parking.ViewModels
                     ThreadHelper.Sleep(25);
                 }
             });
-            
+
         }
 
         protected override Task CloseAsync()

@@ -1,4 +1,5 @@
-﻿<catel1:DataWindow
+﻿<catel:UserControl
+    xmlns:catel="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
     xmlns:catel1="http://schemas.catelproject.com"
     x:Class="Parking.Views.SignInView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -28,4 +29,4 @@
 
     </Grid>
 
-</catel1:DataWindow>
+</catel:UserControl>

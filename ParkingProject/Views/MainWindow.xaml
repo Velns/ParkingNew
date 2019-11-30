@@ -66,6 +66,7 @@
             </StackPanel>
         </DockPanel>
         <ContentControl
+            x:Name="OpacityCurrentView"
             Grid.Column="1"
             Content="{Binding CurrentViewModel, Converter={StaticResource ViewModelToViewConverter}}"
             Opacity="{Binding OpacityView}" />
