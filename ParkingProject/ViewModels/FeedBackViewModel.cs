@@ -1,4 +1,4 @@
-﻿namespace Parking.ViewModels
+﻿namespace ParkingProject.ViewModels
 {
     using Catel.MVVM;
     using System.Threading.Tasks;

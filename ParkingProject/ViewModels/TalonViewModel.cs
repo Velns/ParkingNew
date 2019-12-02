@@ -1,8 +1,8 @@
-﻿namespace Parking.ViewModels
+﻿namespace ParkingProject.ViewModels
 {
     using Catel.Data;
     using Catel.MVVM;
-    using Parking.Models;
+    using ParkingProject.Models;
     using System;
     using System.Threading.Tasks;
 
@@ -10,62 +10,71 @@
     {
         public override string Title { get { return "View model title"; } }
 
+
         [Model]
-        public Talon TalonObject
+        public Talon CurrenrTalon
         {
-            get { return GetValue<Talon>(TalonObjectProperty); }
-            private set { SetValue(TalonObjectProperty, value); }
+            get { return GetValue<Talon>(CurrenrTalonProperty); }
+            private set { SetValue(CurrenrTalonProperty, value); }
         }
-        public static readonly PropertyData TalonObjectProperty = RegisterProperty(nameof(TalonObject), typeof(Talon));
+
+        public static readonly PropertyData CurrenrTalonProperty = RegisterProperty(nameof(CurrenrTalon), typeof(Talon));
 
 
-        [ViewModelToModel("TalonObject", "Parking")]
-        public string TalonParking
+
+        [ViewModelToModel("CurrenrTalon")]
+        public string Parking
         {
-            get { return GetValue<string>(TalonParkingProperty); }
-            set { SetValue(TalonParkingProperty, value); }
+            get { return GetValue<string>(ParkingProperty); }
+            set { SetValue(ParkingProperty, value); }
         }
-        public static readonly PropertyData TalonParkingProperty = RegisterProperty(nameof(TalonParking), typeof(string));
+        public static readonly PropertyData ParkingProperty = RegisterProperty(nameof(Parking), typeof(string));
 
-        [ViewModelToModel("TalonObject", "Number")]
-        public string TalonNumber   
+
+        [ViewModelToModel("CurrenrTalon")]
+        public string Number
         {
-            get { return GetValue<string >(nameProperty); }
-            set { SetValue(nameProperty, value); }
+            get { return GetValue<string>(NumberProperty); }
+            set { SetValue(NumberProperty, value); }
         }
-        public static readonly PropertyData nameProperty = RegisterProperty(nameof(TalonNumber), typeof(string ));
+        public static readonly PropertyData NumberProperty = RegisterProperty(nameof(Number), typeof(string));
 
 
-        [ViewModelToModel("TalonObject", "CarNumber")]
-        public string TalonCarNumber
+        [ViewModelToModel("CurrenrTalon")]
+        public int Place
         {
-            get { return GetValue<string>(TalonCarNumberProperty); }
-            set { SetValue(TalonCarNumberProperty, value); }
+            get { return GetValue<int>(PlaceProperty); }
+            set { SetValue(PlaceProperty, value); }
         }
-        public static readonly PropertyData TalonCarNumberProperty = RegisterProperty(nameof(TalonCarNumber), typeof(string));
+        public static readonly PropertyData PlaceProperty = RegisterProperty(nameof(Place), typeof(int));
 
-        [ViewModelToModel("TalonObject", "Place")]
-        public int TalonPlaceNumber
+
+
+        [ViewModelToModel("CurrenrTalon")]
+        public string CarNumber
         {
-            get { return GetValue<int>(PlaceNumberProperty); }
-            set { SetValue(PlaceNumberProperty, value); }
+            get { return GetValue<string>(CarNumberProperty); }
+            set { SetValue(CarNumberProperty, value); }
         }
-        public static readonly PropertyData PlaceNumberProperty = RegisterProperty(nameof(TalonPlaceNumber), typeof(int));
+        public static readonly PropertyData CarNumberProperty = RegisterProperty(nameof(CarNumber), typeof(string));
 
-        [ViewModelToModel("TalonObject", "StartDate")]
-        public string TalonStartDate
-        {
-            get { return GetValue<string>(TalonStartDateProperty); }
-            set { SetValue(TalonStartDateProperty, value); }        }
-        public static readonly PropertyData TalonStartDateProperty = RegisterProperty(nameof(TalonStartDate), typeof(string), null);
 
-        [ViewModelToModel("TalonObject", "StopDate")]
-        public string TalonStopDate
+        [ViewModelToModel("CurrenrTalon")]
+        public string StartDate
         {
-            get { return GetValue<string>(TalonStopDateProperty); }
-            set { SetValue(TalonStopDateProperty, value); }
+            get { return GetValue<string>(StartDateProperty); }
+            set { SetValue(StartDateProperty, value); }
         }
-        public static readonly PropertyData TalonStopDateProperty = RegisterProperty(nameof(TalonStopDate), typeof(string));
+        public static readonly PropertyData StartDateProperty = RegisterProperty(nameof(StartDate), typeof(string));
+
+
+        [ViewModelToModel("CurrenrTalon")]
+        public string StopDate
+        {
+            get { return GetValue<string>(StopDateProperty); }
+            set { SetValue(StopDateProperty, value); }
+        }
+        public static readonly PropertyData StopDateProperty = RegisterProperty(nameof(StopDate), typeof(string));
 
         protected override async Task InitializeAsync()
         {
@@ -83,7 +92,7 @@
 
         public TalonViewModel(Talon talon = null)
         {
-            TalonObject = talon ?? new Talon();
+            CurrenrTalon = talon ?? new Talon();
         }
     }
 }

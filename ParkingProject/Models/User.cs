@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Catel.Data;
 
-namespace Parking.Models
+namespace ParkingProject.Models
 {
     public class User : ValidatableModelBase
     {

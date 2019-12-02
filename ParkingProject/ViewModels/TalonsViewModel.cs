@@ -1,9 +1,9 @@
-﻿namespace Parking.ViewModels
+﻿namespace ParkingProject.ViewModels
 {
     using Catel.MVVM;
     using System.Collections.ObjectModel;
     using System.Threading.Tasks;
-    using Parking.Models;
+    using ParkingProject.Models;
     using Catel.Data;
     using Catel.Services;
 
@@ -46,7 +46,7 @@
                     {
                         if (e.Result ?? false)
                         {
-                            TalonsCollection.Add(viewModel.TalonObject);
+                            TalonsCollection.Add(viewModel.CurrenrTalon);
                         }
                     });
                 }));

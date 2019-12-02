@@ -1,17 +1,13 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Threading.Tasks;
-using System.Windows.Media.Animation;
-using Catel;
-using Catel.Data;
-using Catel.MVVM;
-using Catel.Services;
-using Parking.Models;
-using Parking.Views;
-
-namespace Parking.ViewModels
+﻿namespace ParkingProject.ViewModels
 {
+    using Catel.MVVM;
+    using Catel.Services;
+    using System.Collections.ObjectModel;
+    using System.Threading.Tasks;
+    using ParkingProject.Models;
+    using Catel.Data;
+    using Catel;
+
     /// <summary>
     /// MainWindow view model.
     /// </summary>
@@ -25,6 +21,7 @@ namespace Parking.ViewModels
         private readonly IViewModel signInViewModel;
         private readonly IViewModel talonsViewModel;
         private readonly IViewModel usersViewModel;
+        private readonly IViewModel parkingsViewModel;
 
         //private User _currUser;
 
@@ -74,6 +71,7 @@ namespace Parking.ViewModels
                 });
             }
         }
+
         public Command ShowFeedBackView
         {
             get
@@ -84,7 +82,17 @@ namespace Parking.ViewModels
                 });
             }
         }
-        
+        public Command ShowParkingsView
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SlowChangeView(parkingsViewModel);
+                });
+            }
+        }
+
         public MainWindowViewModel(IUIVisualizerService uiVisualizerService, IMessageService messageService)
         {
             _uiVisualizerService = uiVisualizerService;
@@ -95,32 +103,18 @@ namespace Parking.ViewModels
             signInViewModel = new SignInViewModel();
             talonsViewModel = new TalonsViewModel(_uiVisualizerService);
             usersViewModel = new UsersViewModel();
+            parkingsViewModel = new ParkingsViewModel(_uiVisualizerService);
 
             var user = new User() { Login="Login",Pass="Pass"};
             var a = new SignInViewModel(user);
             _uiVisualizerService.ShowDialogAsync(a);
 
-            CurrentViewModel = signInViewModel;
+            //CurrentViewModel = talonsViewModel;
         }
 
         //private void SlowChangeView(IViewModel newViewModel)
         private async void SlowChangeView(IViewModel newViewModel)
         {
-            ////метод start animatiom
-            //DoubleAnimation opacityDA = new DoubleAnimation();
-            //opacityDA.From = 
-            //opacityDA.To = 0;
-            //opacityDA.Duration = TimeSpan.FromSeconds(0.1);
-
-            //CurrentViewModel = newViewModel;
-
-            ////методо Finish animation
-            //opacityDA.To = 1;
-            //opacityDA.Duration = TimeSpan.FromSeconds(0.1);
-            //opacityDA.AutoReverse = true;
-            //opacityDA.RepeatBehavior = new RepeatBehavior(0.1);
-            //opacityDA.BeginAnimation(OpacityView, opacityDA);
-
             await Task.Factory.StartNew(() =>
             {
                 for (double i = 1; OpacityView > 0; i -= 0.2)

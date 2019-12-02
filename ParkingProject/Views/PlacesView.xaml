@@ -1,0 +1,37 @@
+﻿<catel:UserControl x:Class="ParkingProject.Views.PlacesView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com">
+    <Grid>
+        <ListView
+            Grid.Row="1"
+            Margin="10"
+            ItemsSource="{Binding Places}"
+            SelectedItem="{Binding SelectedPlace}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn
+                        Width="120"
+                        DisplayMemberBinding="{Binding Number}"
+                        Header="Number" />
+                    <GridViewColumn
+                        Width="120"
+                        DisplayMemberBinding="{Binding IsEmpty}"
+                        Header="IsEmpty" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ToolBar Grid.Row="0">
+            <Button
+                Width="260"
+                Height="22"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Command="{Binding EditParking}"
+                Content="Edit - Зробити даблклік!!!!!!!!!!!!!!!!!"
+                Focusable="False" Margin="0,8,0,9" />
+        </ToolBar>
+
+    </Grid>
+
+</catel:UserControl>

@@ -1,4 +1,4 @@
-﻿namespace Parking.Views
+﻿namespace ParkingProject.Views
 {
     using Catel.Windows;
 

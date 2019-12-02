@@ -1,10 +1,10 @@
 ﻿namespace ParkingProject.Views
 {
-    public partial class FeedBackView
+    public partial class ParkingView
     {
-        public FeedBackView()
+        public ParkingView()
         {
             InitializeComponent();
-        }
+        }    
     }
 }

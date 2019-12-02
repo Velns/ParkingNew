@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Parking.Models
+namespace ParkingProject.Models
 {
-    class Place: ValidatableModelBase
+    public class Place: ValidatableModelBase
     {
         public int Number
         {

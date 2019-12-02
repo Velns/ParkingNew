@@ -1,10 +1,10 @@
-﻿namespace Parking.ViewModels
+﻿namespace ParkingProject.ViewModels
 {
     using Catel.Data;
     using Catel.MVVM;
     using Catel.Services;
     using System.Threading.Tasks;
-    using Parking.Models; 
+    using ParkingProject.Models; 
 
     public class UsersViewModel : ViewModelBase
     {        

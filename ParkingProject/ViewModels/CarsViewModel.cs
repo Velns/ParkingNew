@@ -1,22 +1,16 @@
-﻿namespace Parking.ViewModels
+﻿namespace ParkingProject.ViewModels
 {
-    using Catel;
-    using Catel.Collections;
-    using Catel.Data;
-    using Catel.IoC;
     using Catel.MVVM;
     using Catel.Services;
-    using Parking.Models;
-    using Parking.Views;
-using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using System.Threading;
     using System.Threading.Tasks;
+    using ParkingProject.Models;
+    using Catel.Data;
 
     public class CarsViewModel : ViewModelBase
     {
         private IUIVisualizerService _uiVisualizerService;
-        public CarsViewModel(/* dependency injection here */IUIVisualizerService uiVisualizerService)
+        public CarsViewModel(IUIVisualizerService uiVisualizerService)
         {
             _uiVisualizerService = uiVisualizerService;
             CarsCollection = new ObservableCollection<Car>
@@ -56,7 +50,7 @@ using System.Collections.Generic;
                     {
                         if (e.Result ?? false)
                         {
-                            CarsCollection.Add(viewModel.CarObject);
+                            CarsCollection.Add(viewModel.CurrentCar);
                         }
                     });
                 }));

@@ -1,13 +1,8 @@
-﻿namespace Parking.ViewModels
+﻿namespace ParkingProject.ViewModels
 {
-    using Catel;
-    using Catel.Collections;
     using Catel.Data;
-    using Catel.IoC;
     using Catel.MVVM;
-    using Catel.Services;
-    using Parking.Models;
-    using Parking.Views;
+    using ParkingProject.Models;
     using System.Threading.Tasks;
 
     public class SignInViewModel : ViewModelBase

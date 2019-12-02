@@ -1,50 +1,50 @@
-﻿namespace Parking.ViewModels
+﻿namespace ParkingProject.ViewModels
 {
     using Catel.MVVM;
+    using Catel.Services;
+    using System.Collections.ObjectModel;
     using System.Threading.Tasks;
-    using Parking.Models;
+    using ParkingProject.Models;
     using Catel.Data;
 
     public class CarViewModel : ViewModelBase
     {
-
         [Model]
-        public Car CarObject
+        public Car CurrentCar
         {
-            get { return GetValue<Car>(CarObjectProperty); }
-            private set { SetValue(CarObjectProperty, value); }
+            get { return GetValue<Car>(CurrentCarProperty); }
+            private set { SetValue(CurrentCarProperty, value); }
         }
-        public static readonly PropertyData CarObjectProperty = RegisterProperty(nameof(CarObject), typeof(Car));
+        public static readonly PropertyData CurrentCarProperty = RegisterProperty(nameof(CurrentCar), typeof(Car));
         
-        [ViewModelToModel("CarObject", "Number")]
-        public string CarNumber
+        [ViewModelToModel("CurrentCar")]
+        public string Number
         {
-            get { return GetValue<string>(CarNumberProperty); }
-            set { SetValue(CarNumberProperty, value); }
+            get { return GetValue<string>(NumberProperty); }
+            set { SetValue(NumberProperty, value); }
         }
-        public static readonly PropertyData CarNumberProperty = RegisterProperty(nameof(CarNumber), typeof(string));
-
-
-        [ViewModelToModel("CarObject", "Model")]
-        public string CarModel
+        public static readonly PropertyData NumberProperty = RegisterProperty(nameof(Number), typeof(string));
+        
+        [ViewModelToModel("CurrentCar")]
+        public string Model
         {
-            get { return GetValue<string>(CarModelProperty); }
-            set { SetValue(CarModelProperty, value); }
+            get { return GetValue<string>(ModelProperty); }
+            set { SetValue(ModelProperty, value); }
         }
-        public static readonly PropertyData CarModelProperty = RegisterProperty(nameof(CarModel), typeof(string));
-
-
-        [ViewModelToModel("CarObject", "Color")]
-        public string CarColor
+        public static readonly PropertyData ModelProperty = RegisterProperty(nameof(Model), typeof(string));
+        
+        [ViewModelToModel("CurrentCar")]
+        public string Color
         {
-            get { return GetValue<string>(CarColorProperty); }
-            set { SetValue(CarColorProperty, value); }
+            get { return GetValue<string>(ColorProperty); }
+            set { SetValue(ColorProperty, value); }
         }
-        public static readonly PropertyData CarColorProperty = RegisterProperty(nameof(CarColor), typeof(string));
+        public static readonly PropertyData ColorProperty = RegisterProperty(nameof(Color), typeof(string));
+
 
         public CarViewModel(Car car = null)
         {
-            CarObject = car ?? new Car();
+            CurrentCar = car ?? new Car();
         }
     }
 }

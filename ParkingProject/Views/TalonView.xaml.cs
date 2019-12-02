@@ -1,4 +1,4 @@
-﻿namespace Parking.Views
+﻿namespace ParkingProject.Views
 {
     public partial class TalonView
     {
