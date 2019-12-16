@@ -27,7 +27,7 @@
                 Height="22"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Command="{Binding EditParking}"
+                Command="{Binding EditPlace}"
                 Content="Edit - Зробити даблклік!!!!!!!!!!!!!!!!!"
                 Focusable="False" Margin="0,8,0,9" />
         </ToolBar>

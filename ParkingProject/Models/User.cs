@@ -9,6 +9,7 @@ namespace ParkingProject.Models
 {
     public class User : ValidatableModelBase
     {
+        public int ID { set; get; }
 
         public string Login
         {
@@ -16,8 +17,7 @@ namespace ParkingProject.Models
             set { SetValue(LoginProperty, value); }
         }
         public static readonly PropertyData LoginProperty = RegisterProperty(nameof(Login), typeof(string), null);
-
-
+        
         public string Pass
         {
             get { return GetValue<string>(PassProperty); }
@@ -31,8 +31,7 @@ namespace ParkingProject.Models
             set { SetValue(NameProperty, value); }
         }
         public static readonly PropertyData NameProperty = RegisterProperty(nameof(Name), typeof(string), null);
-
-
+        
         public string PhoneNum
         {
             get { return GetValue<string>(PhoneNumProperty); }

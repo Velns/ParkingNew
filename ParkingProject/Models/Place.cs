@@ -9,6 +9,8 @@ namespace ParkingProject.Models
 {
     public class Place: ValidatableModelBase
     {
+        public int ID { set; get; }
+
         public int Number
         {
             get { return GetValue<int>(NumberProperty); }

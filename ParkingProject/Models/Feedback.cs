@@ -9,5 +9,7 @@ namespace ParkingProject.Models
 {
     class Feedback : ValidatableModelBase
     {
+        public int ID { set; get; }
+
     }
 }

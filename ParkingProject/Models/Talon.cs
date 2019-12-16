@@ -9,6 +9,7 @@ namespace ParkingProject.Models
 {
     public class Talon : ValidatableModelBase
     {
+        public int ID { set; get; }
 
         public string Parking
         {

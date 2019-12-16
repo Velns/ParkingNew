@@ -69,7 +69,7 @@
                     var viewModel = new ParkingViewModel(SelectedParking);
                     _uiVisualizerService.ShowDialogAsync(viewModel);
                 },
-                () => SelectedParking != null));
+                () => SelectedParking != null));                
             }
         }
         

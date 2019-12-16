@@ -41,12 +41,10 @@
             set 
             { 
                 SetValue(PlaceCountProperty, value);
-                
-                
             }
         }
-
         public static readonly PropertyData PlaceCountProperty = RegisterProperty(nameof(PlaceCount), typeof(int));
+
         public override string Title { get { return "View model title"; } }
 
 

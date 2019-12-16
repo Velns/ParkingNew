@@ -9,7 +9,7 @@ namespace ParkingProject.Models
 {
     public class Car : ValidatableModelBase
     {
-
+        public int ID { set; get; }
         public string Model
         {
             get { return GetValue<string>(ModelProperty); }

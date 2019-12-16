@@ -109,7 +109,14 @@
             var a = new SignInViewModel(user);
             _uiVisualizerService.ShowDialogAsync(a);
 
-            //CurrentViewModel = talonsViewModel;
+            //using (CarContext db = new CarContext())
+            //{
+            //    Car c1 = new Car { Model = "1", Number = "1" };
+            //    Car c2 = new Car { Model = "2", Number = "2" };
+            //    db.Cars.Add(c1);
+            //    db.Cars.Add(c2);
+            //    db.SaveChanges();
+            //}
         }
 
         //private void SlowChangeView(IViewModel newViewModel)

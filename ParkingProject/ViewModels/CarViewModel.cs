@@ -41,7 +41,6 @@
         }
         public static readonly PropertyData ColorProperty = RegisterProperty(nameof(Color), typeof(string));
 
-
         public CarViewModel(Car car = null)
         {
             CurrentCar = car ?? new Car();

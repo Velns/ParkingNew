@@ -68,6 +68,14 @@
                 Command="{Binding RemoveParking}"
                 Content="Remove"
                 Focusable="False" />
+            <Button
+                Width="75"
+                Height="22"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Command="{Binding SaveCar}"
+                Content="Save to DB"
+                Focusable="False" />
 
         </ToolBar>
         <ContentControl

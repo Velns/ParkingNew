@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 namespace ParkingProject.Models
 {
     public class Parking: ValidatableModelBase
-    {  
+    {
+        public int ID { set; get; }
+
         public string Name
         {
             get { return GetValue<string>(NameProperty); }
@@ -36,7 +38,15 @@ namespace ParkingProject.Models
 
         public int PlaceCount
         {
-            get { if (Places != null) return Places.Count; else return 0; }
+            get 
+            {
+                if (Places != null)
+                {
+                    GetValue<int>(PlaceCountProperty);
+                    return Places.Count;
+                }
+                else return 0; 
+            }
             set 
             { 
                 SetValue(PlaceCountProperty, value);
