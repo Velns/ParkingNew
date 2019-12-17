@@ -28,7 +28,7 @@
         CarContext dbCar = new CarContext();
         FeedbackContext dbFeedback = new FeedbackContext();
         ParkingContext dbParking = new ParkingContext();
-        PlaceContext dbPlace = new PlaceContext();
+        //PlaceContext dbPlace = new PlaceContext();
         TalonContext dbTalon = new TalonContext();
         UserContext dbUser = new UserContext();
 
@@ -112,10 +112,11 @@
             signInViewModel = new SignInViewModel(_currUser, isLogined, dbUser);
             talonsViewModel = new TalonsViewModel(_uiVisualizerService, dbTalon);
             usersViewModel = new UsersViewModel(dbUser);
-            parkingsViewModel = new ParkingsViewModel(_uiVisualizerService, dbParking, dbPlace);
-            dbUser.Users.Add(new User());
-            dbUser.SaveChanges();
-            isLogined = true;//            SlowChangeView(signInViewModel);
+            parkingsViewModel = new ParkingsViewModel(_uiVisualizerService, dbParking/*, dbPlace*/);
+            
+
+            isLogined = true;//
+            SlowChangeView(signInViewModel);
         }
         private async void SlowChangeView(IViewModel newViewModel)
         {
@@ -143,7 +144,7 @@
             dbCar.Dispose();
             dbFeedback.Dispose();
             dbParking.Dispose();
-            dbPlace.Dispose();
+            //dbPlace.Dispose();
             dbTalon.Dispose();
             dbUser.Dispose();
             return base.CloseAsync();

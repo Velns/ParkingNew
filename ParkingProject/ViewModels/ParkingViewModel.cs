@@ -10,7 +10,7 @@
     public class ParkingViewModel : ViewModelBase
     {
         private ParkingContext db;
-        private PlaceContext dbPlace;
+        //private PlaceContext dbPlace;
         [Model]
         public Parking CurrentParking
         {
@@ -81,7 +81,7 @@
             {
                 return new Command(() =>
                 {
-                    SelectedPlace.IsEmpty = !SelectedPlace.IsEmpty;
+                    if (SelectedPlace != null)  SelectedPlace.IsEmpty = !SelectedPlace.IsEmpty;
                 });
             }
         }
@@ -91,22 +91,26 @@
             {
                 for (int i = Places.Count; i < count; i++)
                 {
-                    Places.Add(new Place() { Number = i + 1 });
+                    Place a = new Place() { Number = i + 1, Parking = CurrentParking };
+                    db.Places.Add(a);
+                   // Places.Add(a);
+                    
                 }
             }
             else
             {
                 for (int i = Places.Count; i > count; i--)
                 {
-                    Places.RemoveAt(i - 1);
+                    db.Places.Remove(Places[i - 1]);
                 }
             }
+            db.SaveChangesAsync();
         }
-        public ParkingViewModel(ParkingContext dbParking, PlaceContext dbPlace, Parking parking = null)
+        public ParkingViewModel(ParkingContext dbParking, /*PlaceContext dbPlace,*/ Parking parking = null)
         {
             CurrentParking = parking ?? new Parking();
             db = dbParking;
-            this.dbPlace = dbPlace;
+            //this.dbPlace = dbPlace;
         }
     }
 }

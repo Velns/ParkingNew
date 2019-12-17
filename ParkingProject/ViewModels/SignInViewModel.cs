@@ -84,7 +84,7 @@
         protected override async Task CloseAsync()
         {
             // TODO: unsubscribe from events here
-            MessageBox.Show("11111");
+            // MessageBox.Show("11111");
             await base.CloseAsync();
         }
 

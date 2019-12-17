@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace ParkingProject.Models
 {
-    public class PlaceContext : DbContext
-    {
-        public PlaceContext()
-            : base("DbConnection")
-        { }
+    //public class PlaceContext : DbContext
+    //{
+    //    public PlaceContext()
+    //        : base("DbConnection")
+    //    { }
 
-        public DbSet<Place> Places { get; set; }
-    }
+    //    public DbSet<Place> Places { get; set; }
+    //}
 }

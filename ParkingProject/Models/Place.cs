@@ -1,6 +1,7 @@
 ﻿using Catel.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,9 @@ namespace ParkingProject.Models
     public class Place: ValidatableModelBase
     {
         public int ID { set; get; }
-        public int IDParking { set; get; }
+        [ForeignKey("Parking")]
+        public int ParkingID { set; get; }
+        public Parking Parking { set; get; }
 
         public int Number
         {

@@ -13,16 +13,16 @@
     {
         private IUIVisualizerService _uiVisualizerService;
         private ParkingContext db;
-        private PlaceContext dbPlace;
-        public ParkingsViewModel(IUIVisualizerService uiVisualizerService, ParkingContext dbParking, PlaceContext dbPlace)
+        //private PlaceContext dbPlace;
+        public ParkingsViewModel(IUIVisualizerService uiVisualizerService, ParkingContext dbParking/*, PlaceContext dbPlace*/)
         {
             _uiVisualizerService = uiVisualizerService;
             db = dbParking;
-            this.dbPlace = dbPlace;
+            //this.dbPlace = dbPlace;
             ParkingsCollection = new ObservableCollection<Parking>();
-            //db.Parkings.Load();
-            //this.dbPlace.Places.Load();
-            //LoadCollection();
+            db.Parkings.Load();
+            db.Places.Load();
+            LoadCollection();
         }
 
 
@@ -49,7 +49,7 @@
             {
                 return _addParking ?? (_addParking = new Command(() =>
                 {
-                    var viewModel = new ParkingViewModel(db, dbPlace);
+                    var viewModel = new ParkingViewModel(db/*, dbPlace*/);
 
                     _uiVisualizerService.ShowDialogAsync(viewModel, (sender, e) =>
                     {
@@ -57,8 +57,8 @@
                         {
                             ParkingsCollection.Add(viewModel.CurrentParking);
                             db.Parkings.Add(viewModel.CurrentParking);
-                            db.SaveChanges();
-                            dbPlace.SaveChanges();
+                            db.SaveChangesAsync();
+                            //dbPlace.SaveChanges();
                         }
                     });
                 }));
@@ -73,7 +73,7 @@
             {
                 return _editParking ?? (_editParking = new Command(() =>
                 {
-                    var viewModel = new ParkingViewModel(db, dbPlace, SelectedParking);
+                    var viewModel = new ParkingViewModel(db/*, dbPlace*/, SelectedParking);
                     _uiVisualizerService.ShowDialogAsync(viewModel);
                 },
                 () => SelectedParking != null));                
@@ -88,6 +88,8 @@
             {
                 return _removeParking ?? (_removeParking = new Command(async () =>
                 {
+                    db.Places.RemoveRange(SelectedParking.Places);
+                    
                     db.Parkings.Remove(SelectedParking);
                     ParkingsCollection.Remove(SelectedParking);                    
                     db.SaveChanges();
@@ -103,8 +105,8 @@
             {
                 return _saveParkings ?? (_saveParkings = new Command(async () =>
                 {
-                    db.SaveChanges();
-                    dbPlace.SaveChanges();
+                    await db.SaveChangesAsync();
+                    //dbPlace.SaveChanges();
                 }));
             }
         }
@@ -113,11 +115,11 @@
             foreach (var p in db.Parkings)
             {
                 ParkingsCollection.Add(p);
-                foreach (var place in dbPlace.Places)
-                {
-                    MessageBox.Show(place.ID.ToString() + ' ' + place.IDParking);
-                    if (place.IDParking == p.ID) p.Places.Add(place);
-                }
+            //    foreach (var place in dbPlace.Places)
+            //    {
+            //        MessageBox.Show(place.ID.ToString() + ' ' + place.IDParking);
+            //        if (place.IDParking == p.ID) p.Places.Add(place);
+            //    }
             }
         }
 

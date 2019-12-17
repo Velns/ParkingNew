@@ -18,5 +18,6 @@ namespace ParkingProject.Models
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
         public DbSet<Parking> Parkings { get; set; }
+        public DbSet<Place> Places { get; set; }
     }
 }
