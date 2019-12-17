@@ -1,12 +1,18 @@
 ﻿namespace ParkingProject.ViewModels
 {
     using Catel.MVVM;
+    using ParkingProject.Models;
     using System.Threading.Tasks;
 
     public class FeedBackViewModel : ViewModelBase
     {
+        private FeedbackContext db;
         public FeedBackViewModel(/* dependency injection here */)
         {
+        }
+        public FeedBackViewModel(FeedbackContext dbFeedback)
+        {
+            db = dbFeedback;
         }
 
         public override string Title { get { return "View model title"; } }

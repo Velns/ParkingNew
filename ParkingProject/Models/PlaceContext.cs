@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ParkingProject.Models
 {
-    class PlaceContext : DbContext
+    public class PlaceContext : DbContext
     {
         public PlaceContext()
             : base("DbConnection")

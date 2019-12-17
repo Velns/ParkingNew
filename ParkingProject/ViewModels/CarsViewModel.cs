@@ -10,14 +10,15 @@
 
     public class CarsViewModel : ViewModelBase
     {
-        CarContext db = new CarContext();
+        CarContext db;
         private IUIVisualizerService _uiVisualizerService;
-        public CarsViewModel(IUIVisualizerService uiVisualizerService)
+        public CarsViewModel(IUIVisualizerService uiVisualizerService, CarContext dbCar)
         {
             _uiVisualizerService = uiVisualizerService;
+            db = dbCar;
             CarsCollection = new ObservableCollection<Car>();
-            db.Cars.Load();
-            LoadCollection();
+            //db.Cars.Load();
+            //LoadCollection();
 
             //CarsCollection = new ObservableCollection<Car>
             //{

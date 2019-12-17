@@ -6,19 +6,23 @@
     using System.Threading.Tasks;
     using ParkingProject.Models;
     using Catel.Data;
+    using System.Data.Entity;
+    using System.Windows;
 
     public class ParkingsViewModel : ViewModelBase
     {
         private IUIVisualizerService _uiVisualizerService;
-
-        public ParkingsViewModel(IUIVisualizerService uiVisualizerService)
+        private ParkingContext db;
+        private PlaceContext dbPlace;
+        public ParkingsViewModel(IUIVisualizerService uiVisualizerService, ParkingContext dbParking, PlaceContext dbPlace)
         {
             _uiVisualizerService = uiVisualizerService;
-            ParkingsCollection = new ObservableCollection<Parking>()
-            {
-                new Parking() {Name="1", Address="1", Places = new ObservableCollection<Place>{new Place(), new Place() } },
-                new Parking() {Name="2", Address="2", Places = new ObservableCollection<Place>{new Place() } }
-            } ; 
+            db = dbParking;
+            this.dbPlace = dbPlace;
+            ParkingsCollection = new ObservableCollection<Parking>();
+            //db.Parkings.Load();
+            //this.dbPlace.Places.Load();
+            //LoadCollection();
         }
 
 
@@ -45,13 +49,16 @@
             {
                 return _addParking ?? (_addParking = new Command(() =>
                 {
-                    var viewModel = new ParkingViewModel();
+                    var viewModel = new ParkingViewModel(db, dbPlace);
 
                     _uiVisualizerService.ShowDialogAsync(viewModel, (sender, e) =>
                     {
                         if (e.Result ?? false)
                         {
                             ParkingsCollection.Add(viewModel.CurrentParking);
+                            db.Parkings.Add(viewModel.CurrentParking);
+                            db.SaveChanges();
+                            dbPlace.SaveChanges();
                         }
                     });
                 }));
@@ -66,7 +73,7 @@
             {
                 return _editParking ?? (_editParking = new Command(() =>
                 {
-                    var viewModel = new ParkingViewModel(SelectedParking);
+                    var viewModel = new ParkingViewModel(db, dbPlace, SelectedParking);
                     _uiVisualizerService.ShowDialogAsync(viewModel);
                 },
                 () => SelectedParking != null));                
@@ -81,12 +88,38 @@
             {
                 return _removeParking ?? (_removeParking = new Command(async () =>
                 {
-                    ParkingsCollection.Remove(SelectedParking);
+                    db.Parkings.Remove(SelectedParking);
+                    ParkingsCollection.Remove(SelectedParking);                    
+                    db.SaveChanges();
                 },
                 () => SelectedParking != null));
             }
         }
 
+        private Command _saveParkings;
+        public Command SaveParkings
+        {
+            get
+            {
+                return _saveParkings ?? (_saveParkings = new Command(async () =>
+                {
+                    db.SaveChanges();
+                    dbPlace.SaveChanges();
+                }));
+            }
+        }
+        private void LoadCollection()
+        {
+            foreach (var p in db.Parkings)
+            {
+                ParkingsCollection.Add(p);
+                foreach (var place in dbPlace.Places)
+                {
+                    MessageBox.Show(place.ID.ToString() + ' ' + place.IDParking);
+                    if (place.IDParking == p.ID) p.Places.Add(place);
+                }
+            }
+        }
 
         protected override async Task InitializeAsync()
         {

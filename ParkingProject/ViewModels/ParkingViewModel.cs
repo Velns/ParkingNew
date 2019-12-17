@@ -9,6 +9,8 @@
 
     public class ParkingViewModel : ViewModelBase
     {
+        private ParkingContext db;
+        private PlaceContext dbPlace;
         [Model]
         public Parking CurrentParking
         {
@@ -34,23 +36,77 @@
         }
         public static readonly PropertyData AddressProperty = RegisterProperty(nameof(Address), typeof(string));
 
+
+        [ViewModelToModel("CurrentParking")]
+        public ObservableCollection<Place> Places
+        {
+            get { return GetValue<ObservableCollection<Place>>(PlacesProperty); }
+            set { SetValue(PlacesProperty, value); }
+        }
+
+        public static readonly PropertyData PlacesProperty = RegisterProperty(nameof(Places), typeof(ObservableCollection<Place>));
         [ViewModelToModel("CurrentParking")]
         public int PlaceCount
         {
-            get { return GetValue<int>(PlaceCountProperty); }
-            set 
-            { 
-                SetValue(PlaceCountProperty, value);
+            get
+            {
+                if (Places != null)
+                {
+                    GetValue<int>(PlaceCountProperty);
+                    return Places.Count;
+                }
+                else return 0;
             }
+            set
+            {
+                SetValue(PlaceCountProperty, value);
+                GenearatePlaces(value);
+            }
+
         }
         public static readonly PropertyData PlaceCountProperty = RegisterProperty(nameof(PlaceCount), typeof(int));
 
+        public Place SelectedPlace
+        {
+            get { return GetValue<Place>(SelectedPlaceProperty); }
+            set { SetValue(SelectedPlaceProperty, value); }
+        }
+        public static readonly PropertyData SelectedPlaceProperty = RegisterProperty(nameof(SelectedPlace), typeof(Place), null);
+
         public override string Title { get { return "View model title"; } }
 
-
-        public ParkingViewModel(Parking parking = null)
+        public Command ChangePlaceStatus
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SelectedPlace.IsEmpty = !SelectedPlace.IsEmpty;
+                });
+            }
+        }
+        private void GenearatePlaces(int count)
+        {
+            if (count > Places.Count)
+            {
+                for (int i = Places.Count; i < count; i++)
+                {
+                    Places.Add(new Place() { Number = i + 1 });
+                }
+            }
+            else
+            {
+                for (int i = Places.Count; i > count; i--)
+                {
+                    Places.RemoveAt(i - 1);
+                }
+            }
+        }
+        public ParkingViewModel(ParkingContext dbParking, PlaceContext dbPlace, Parking parking = null)
         {
             CurrentParking = parking ?? new Parking();
+            db = dbParking;
+            this.dbPlace = dbPlace;
         }
     }
 }

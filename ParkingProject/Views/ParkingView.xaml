@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="120" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Label
@@ -96,7 +96,7 @@
                 Height="22"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Command="{Binding EditPlace}"
+                Command="{Binding ChangePlaceStatus}"
                 Content="Edit - Зробити даблклік"
                 Focusable="False" Background="#FFE00000" />
         </ToolBar>

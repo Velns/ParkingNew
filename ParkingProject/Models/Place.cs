@@ -10,6 +10,7 @@ namespace ParkingProject.Models
     public class Place: ValidatableModelBase
     {
         public int ID { set; get; }
+        public int IDParking { set; get; }
 
         public int Number
         {

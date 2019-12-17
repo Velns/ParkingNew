@@ -7,12 +7,13 @@
     using ParkingProject.Models; 
 
     public class UsersViewModel : ViewModelBase
-    {        
-       // User testUser = new User();
-
-        public UsersViewModel(User user = null)
+    {
+        // User testUser = new User();
+        UserContext db;
+        public UsersViewModel(UserContext dbUser, User user = null)
         {
             CurUser = user ?? new User();
+            db = dbUser;
         }
         
         [Model]

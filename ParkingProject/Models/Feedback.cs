@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ParkingProject.Models
 {
-    class Feedback : ValidatableModelBase
+    public class Feedback : ValidatableModelBase
     {
         public int ID { set; get; }
 

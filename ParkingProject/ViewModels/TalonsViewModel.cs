@@ -10,9 +10,11 @@
     public class TalonsViewModel : ViewModelBase
     {
         private readonly IUIVisualizerService _uiVisualizerService;
-        public TalonsViewModel(/* dependency injection here */IUIVisualizerService uiVisualizerService)
+        TalonContext db;
+        public TalonsViewModel(/* dependency injection here */IUIVisualizerService uiVisualizerService, TalonContext dbTalon)
         {
             _uiVisualizerService = uiVisualizerService;
+            db = dbTalon;
             TalonsCollection = new ObservableCollection<Talon>();
             TalonsCollection.Add(new Talon() { Parking="1", Number="1", Place=1, StartDate="1", StopDate="1"});
         }

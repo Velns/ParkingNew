@@ -43,6 +43,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Migrations\201912161639182_InitialCreate.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>201912161639182_InitialCreate.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\201912170107180_AddCarContextMigration.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>201912170107180_AddCarContextMigration.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\201912170252077_1.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>201912170252077_1.resx</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -51,6 +66,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Migrations\201912161639182_InitialCreate.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>201912161639182_InitialCreate.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Migrations\201912170107180_AddCarContextMigration.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>201912170107180_AddCarContextMigration.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Migrations\201912170252077_1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>201912170252077_1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

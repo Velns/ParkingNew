@@ -36,43 +36,16 @@ namespace ParkingProject.Models
         public static readonly PropertyData PlacesProperty = RegisterProperty(nameof(Places), typeof(ObservableCollection<Place>), null);
 
 
+
         public int PlaceCount
         {
-            get 
-            {
-                if (Places != null)
-                {
-                    GetValue<int>(PlaceCountProperty);
-                    return Places.Count;
-                }
-                else return 0; 
-            }
-            set 
-            { 
-                SetValue(PlaceCountProperty, value);
-                GenearatePlaces(value);
-            }
+            get { return GetValue<int>(PlaceCountProperty); }
+            set { SetValue(PlaceCountProperty, value); }
         }
         public static readonly PropertyData PlaceCountProperty = RegisterProperty(nameof(PlaceCount), typeof(int), null);
 
 
-        private void GenearatePlaces(int count)
-        {
-            if (count > Places.Count)
-            {
-                for (int i = Places.Count; i < count; i++)
-                {
-                    Places.Add(new Place() { Number = i + 1 });
-                }
-            }
-            else
-            {
-                for (int i = Places.Count; i > count; i--)
-                {
-                    Places.RemoveAt(i-1);
-                }
-            }
-        }
+        
 
         public Parking()
         {

@@ -73,7 +73,7 @@
                 Height="22"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Command="{Binding SaveCar}"
+                Command="{Binding Parkings}"
                 Content="Save to DB"
                 Focusable="False" />
 
